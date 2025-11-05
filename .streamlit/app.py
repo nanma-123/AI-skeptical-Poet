@@ -9,7 +9,7 @@ import time
 try:
     API_KEY = st.secrets["GEMINI_API_KEY"]
 except KeyError:
-    API_KEY = "AIzaSyA-SsPyvblMHPT-DpfKjqeMVtxyUkZWIyY" # If not found, set to empty string
+    API_KEY = "AIzaSyAkvDzBPmLXBduHHhrPBR4wEJ7imKQ62tI" # If not found, set to empty string
 
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key={API_KEY}"
 
