@@ -1,3 +1,14 @@
+completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": prompt}
+    ],
+    temperature=0.8,
+    max_tokens=250
+)
+return completion.choices[0].message.content.strip()
+
 import streamlit as st
 from openai import OpenAI
 
