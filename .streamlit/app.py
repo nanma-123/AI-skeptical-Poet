@@ -15,7 +15,7 @@ She critiques bold claims, analyzes logic, and weaves facts into rhyme.
 """)
 
 # --- Initialize OpenAI Client ---
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets["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"])
 
 # --- Chat Input ---
 user_input = st.text_area("Enter your question or statement about AI:")
