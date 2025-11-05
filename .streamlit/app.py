@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import OpenAI
+import openai
 
 # --- Page setup ---
 st.set_page_config(page_title="Kelly - The AI Scientist Poet", page_icon="🤖")
@@ -14,8 +14,8 @@ Kelly is an AI scientist who speaks in verse.
 She critiques bold claims, analyzes logic, and weaves facts into rhyme.
 """)
 
-# --- Initialize OpenAI Client ---
-client = OpenAI(api_key=st.secrets["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"])
+# --- OpenAI API Key ---
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # --- Chat Input ---
 user_input = st.text_area("Enter your question or statement about AI:")
@@ -29,7 +29,7 @@ def generate_poem(prompt):
         "Include practical suggestions where possible."
     )
 
-    response = client.chat.completions.create(
+    completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": system_prompt},
@@ -39,7 +39,7 @@ def generate_poem(prompt):
         max_tokens=250
     )
 
-    return response.choices[0].message.content.strip()
+    return completion.choices[0].message.content.strip()
 
 if st.button("Ask Kelly"):
     if user_input:
